@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-image"
+    version="0.0.1">
+    <name>Image Processing</name>
+    <description>Cordova Image Processing Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,image,vision,processing</keywords>
+    <repo>https://github.com/RealBrubru/cordova-plugin-image-processing.git</repo>
+    <issue>https://github.com/RealBrubru/cordova-plugin-image-processing/issues</issue>
+
+    <js-module src="www/ImageProcessing.js" name="ImageProcessing">
+        <clobbers target="ImageProcessing" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Image">
+                <param name="android-package" value="org.apache.cordova.imageprocessing.ImageProcessing"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <source-file src="src/android/ImageProcessing.java" target-dir="src/org/apache/cordova/imageprocessing" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="ImageProcessing">
+                <param name="ios-package" value="ImageProcessing" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/ImageProcessing.h" />
+        <source-file src="src/ios/ImageProcessing.m" />
+
+        <framework src="MobileCoreServices.framework" />
+    </platform>
+</plugin>
