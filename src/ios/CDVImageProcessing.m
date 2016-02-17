@@ -5,7 +5,7 @@
 
 - (void) resize:(CDVInvokedUrlCommand*)command
 {
-    NSLog(@"CDVImageProcessing IOS resize");
+    NSLog(@"CDVImageProcessing AAAAAAAHHH");
 }
 
 @end
