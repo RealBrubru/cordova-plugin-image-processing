@@ -8,6 +8,9 @@ Use the Cordova CLI and type in the following command:
 
 `cordova plugin add https://github.com/RealBrubru/cordova-plugin-image-processing.git`
 
+To remove:
+`cordova plugin rm cordova-plugin-image-processing`
+
 ## Sample Code
 
 At the moment the plugin is only avaible on the android and ios platform.
