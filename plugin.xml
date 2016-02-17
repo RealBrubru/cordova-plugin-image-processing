@@ -32,7 +32,7 @@
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
             <feature name="ImageProcessing">
-                <param name="ios-package" value="ImageProcessing" />
+                <param name="ios-package" value="CDVImageProcessing" />
             </feature>
         </config-file>
 
