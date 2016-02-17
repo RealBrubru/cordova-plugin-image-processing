@@ -9,9 +9,10 @@ Use the Cordova CLI and type in the following command:
 `cordova plugin add https://github.com/RealBrubru/cordova-plugin-image-processing.git`
 
 To remove:
+
 `cordova plugin rm cordova-plugin-image-processing`
 
-## Sample Code
+## Methods
 
 At the moment the plugin is only avaible on the android and ios platform.
 
@@ -19,7 +20,7 @@ At the moment the plugin is only avaible on the android and ios platform.
 
     ImageProcessing.resize(success, failed, options);
 
-### Options
+#### options
   - **sourceUri**(String): The Uri for the image on the device to get scaled
   - **destinationUri**(String): The name of the image to be saved
   - **width**(Number): The width of the new image
