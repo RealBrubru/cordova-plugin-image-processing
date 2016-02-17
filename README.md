@@ -26,7 +26,7 @@ At the moment the plugin is only avaible on the android and ios platform.
   - **width**(Number): The width of the new image
   - **height**(Number): The height of the new image
 
-### Android Example
+##### example
     var options = {
           sourceUri: sourceUri,
           destinationUri: destinationUri,
