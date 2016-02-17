@@ -13,4 +13,5 @@ public class ImageProcessing extends CordovaPlugin {
         callbackContext.success();
         return true;
     }
+
 }
