@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 public class ImageProcessing extends CordovaPlugin {
@@ -88,7 +89,7 @@ public class ImageProcessing extends CordovaPlugin {
               
               resize(image, newWidth, newHeight, keepScale);
               
-              saveImage(image);
+              saveImage(image, destinationUri);
             }
           });
           
