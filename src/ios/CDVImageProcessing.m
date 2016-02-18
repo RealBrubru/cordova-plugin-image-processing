@@ -3,7 +3,7 @@
 
 @implementation CDVImageProcessing
 
-- (void) resize:(CDVInvokedUrlCommand*)command
+- (void) resize:(CDVInvokedUrlCommand *)command
 {
     /*
     NSString *sourceUri = [command argumentAtIndex: 0];
@@ -16,16 +16,15 @@
     NSLog(@"CDVImageProcessing AAAAAAAHHH");
 }
 
-/*
-- (void) rotate:(CDVInvokedUrlCommand*)command
+
+- (void) rotate:(CDVInvokedUrlCommand *)command
 {
     NSLog(@"CDVImageProcessing AAAAAAAHHH");
 }
 
-- (void) crop:(CDVInvokedUrlCommand*)command
+- (void) crop:(CDVInvokedUrlCommand *)command
 {
     NSLog(@"CDVImageProcessing AAAAAAAHHH");
 }
-*/
 
 @end

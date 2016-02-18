@@ -3,12 +3,10 @@
 
 @interface CDVImageProcessing : CDVPlugin {}
 
-- (void) resize:(CDVInvokedUrlCommand*)command;
+- (void) resize:(CDVInvokedUrlCommand *)command;
 
-/*
-- (void) rotate:(CDVInvokedUrlCommand*)command;
+- (void) rotate:(CDVInvokedUrlCommand *)command;
 
-- (void) crop:(CDVInvokedUrlCommand*)command;
-*/
+- (void) crop:(CDVInvokedUrlCommand *)command;
 
 @end
