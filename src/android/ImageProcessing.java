@@ -8,6 +8,13 @@ import org.json.JSONException;
 
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.graphics.Bitmap;
+
 public class ImageProcessing extends CordovaPlugin {
     
     public static final String LOG_TAG = "ImageProcessing";
@@ -20,14 +27,14 @@ public class ImageProcessing extends CordovaPlugin {
         int finalWidth = width;
         int finalHeight = height;
 
-    		if(keepScale)
+    		/*if(keepScale)
     		{
 		        //Log.d("autocrop", width + " x " + height);
 		        float scaleFactor = (width > height) ? (float)maxWidth / width : (float)maxHeight / height;
             //Log.d("autocrop", "" + scaleFactor);
             finalWidth = (int)(width * scaleFactor);
 		        finalHeight = (int)(height * scaleFactor);
-	        }
+	        }*/
 
 	        image = Bitmap.createScaledBitmap(image, finalWidth, finalHeight, true);
 	        return image;
