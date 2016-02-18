@@ -7,7 +7,7 @@ function ImageProcessing() {
     console.log("ImageProcessing.js - is created");
 }
 
-imageProcessing.resize = function(successCallback, errorCallback, options) {
+imageProcessing.resize = function (successCallback, errorCallback, options) {
     console.log("ImageProcessing.js - resize: " + JSON.stringify(options));
 
     options = options || {};
@@ -24,7 +24,7 @@ imageProcessing.resize = function(successCallback, errorCallback, options) {
     exec(successCallback, errorCallback, "ImageProcessing", "resize", args);
 };
 
-imageProcessing.rotate = function(successCallback, errorCallback, options) {
+imageProcessing.rotate = function (successCallback, errorCallback, options) {
     console.log("ImageProcessing.js - rotate: " + JSON.stringify(options));
 
     options = options || {};
@@ -40,7 +40,7 @@ imageProcessing.rotate = function(successCallback, errorCallback, options) {
     exec(successCallback, errorCallback, "ImageProcessing", "rotate", args);
 };
 
-imageProcessing.crop = function(successCallback, errorCallback, options) {
+imageProcessing.crop = function (successCallback, errorCallback, options) {
     console.log("ImageProcessing.js - crop: " + JSON.stringify(options));
 
     options = options || {};
