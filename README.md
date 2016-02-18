@@ -23,15 +23,15 @@ At the moment the plugin is only avaible on the android and ios platform.
 #### options
   - **sourceUri** (String): The Uri for the image on the device to get scaled
   - **destinationUri** (String): The name of the image to be saved
-  - **width** (Number): The width of the new image
-  - **height** (Number): The height of the new image
+  - **newWidth** (Number): Width of the new resized image
+  - **newHeight** (Number): Height of the new resize image
 
 ##### example
     var options = {
           sourceUri: sourceUri,
           destinationUri: destinationUri,
-          width: 800,
-          height: 400
+          newWidth: 800,
+          newHeight: 400
           };
 
     ImageProcessing.resize(function(success) {
