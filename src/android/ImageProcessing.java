@@ -85,11 +85,11 @@ public class ImageProcessing extends CordovaPlugin {
             public void run() {
               //TODO: Validate if image exists
               //TODO: Image quality
-              Bitmap newImage = BitmapFactory.decodeFile(sourceUri);
+              Bitmap image = BitmapFactory.decodeFile(sourceUri);
               
-              resize(image, newWidth, newHeight, keepScale);
+              Bitmap newImage = resize(image, newWidth, newHeight, keepScale);
               
-              saveImage(image, destinationUri);
+              saveImage(newImage, destinationUri);
             }
           });
           
