@@ -12,7 +12,7 @@ To remove:
 
 `cordova plugin rm cordova-plugin-image-processing`
 
-## Sample Code
+## Methods
 
 At the moment the plugin is only avaible on the android and ios platform.
 
@@ -20,23 +20,68 @@ At the moment the plugin is only avaible on the android and ios platform.
 
     ImageProcessing.resize(success, failed, options);
 
-### Options
-  - **sourceUri**(String): The Uri for the image on the device to get scaled
-  - **destinationUri**(String): The name of the image to be saved
-  - **width**(Number): The width of the new image
-  - **height**(Number): The height of the new image
+#### options
+  - **sourceUri** (String): The Uri for the image on the device to get scaled
+  - **destinationUri** (String): The name of the image to be saved
+  - **newWidth** (Number): Width of the new resized image
+  - **newHeight** (Number): Height of the new resize image
 
-### Android Example
+##### example
     var options = {
           sourceUri: sourceUri,
           destinationUri: destinationUri,
-          width: 800,
-          height: 400
+          newWidth: 800,
+          newHeight: 400
           };
 
     ImageProcessing.resize(function(success) {
-         // success: image is the new resized image
+         // success: 
       }, function(fail) {
-        // failed: grumpy cat likes this function
+        // failed: 
       }, options);
 
+### rotate
+
+    ImageProcessing.rotate(success, failed, options);
+
+#### options
+  - **sourceUri** (String): The Uri for the image on the device to get scaled
+  - **destinationUri** (String): The name of the image to be saved
+  - **angle** (Number): Rotation angle
+  - **keepSize** (Bool): Keep image size or not
+
+##### example
+    var options = {
+          sourceUri: sourceUri,
+          destinationUri: destinationUri,
+          angle: 30,
+          keepSize: true
+          };
+
+    ImageProcessing.rotate(function(success) {
+         // success: 
+      }, function(fail) {
+        // failed: 
+      }, options);
+
+### crop
+
+    ImageProcessing.crop(success, failed, options);
+
+#### options
+  - **sourceUri** (String): The Uri for the image on the device to get scaled
+  - **destinationUri** (String): The name of the image to be saved
+  - **rect** (Rectangle): Rectangle to crop
+
+##### example
+    var options = {
+          sourceUri: sourceUri,
+          destinationUri: destinationUri,
+          rect: [30, 30, 120, 140]
+          };
+
+    ImageProcessing.crop(function(success) {
+         // success: 
+      }, function(fail) {
+        // failed: 
+      }, options);
