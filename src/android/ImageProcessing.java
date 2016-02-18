@@ -2,9 +2,10 @@ package org.apache.cordova.imageprocessing;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
-
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.util.Log;
 
@@ -14,12 +15,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.graphics.Bitmap;
+import android.os.Environment;
 
 public class ImageProcessing extends CordovaPlugin {
     
     public static final String LOG_TAG = "ImageProcessing";
     
-    private void resize(Bitmap image, int newWidth, int newHeight, boolean keepScale)
+    private Bitmap resize(Bitmap image, int newWidth, int newHeight, boolean keepScale)
     {
 		if (newWidth > 0 && newHeight > 0) {
         int width = image.getWidth();
@@ -43,7 +45,7 @@ public class ImageProcessing extends CordovaPlugin {
 	    }
     }
     
-    private void saveImage(String destinationUri)
+    private void saveImage(Bitmap image, String destinationUri)
     {
       //TODO: Support the full path
       File folder = new File(Environment.getExternalStorageDirectory(), "Pictures");
@@ -54,7 +56,7 @@ public class ImageProcessing extends CordovaPlugin {
       File f = new File(folder, destinationUri);
 
       FileOutputStream fos = new FileOutputStream(f);
-      bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+      image.compress(Bitmap.CompressFormat.PNG, 100, fos);
       
       JSONObject jsonRes = new JSONObject();
       jsonRes.put("filePath",f.getAbsolutePath());
