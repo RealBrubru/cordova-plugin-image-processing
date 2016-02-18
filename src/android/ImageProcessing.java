@@ -12,7 +12,7 @@ public class ImageProcessing extends CordovaPlugin {
     
     public static final String LOG_TAG = "ImageProcessing";
     
-    private void resize(Bitmap image, String destinationUri, int newWidth, int newHeight, boolean keepScale)
+    private void resize(Bitmap image, int newWidth, int newHeight, boolean keepScale)
     {
 		if (newWidth > 0 && newHeight > 0) {
         int width = image.getWidth();
@@ -47,14 +47,12 @@ public class ImageProcessing extends CordovaPlugin {
       File f = new File(folder, destinationUri);
 
       FileOutputStream fos = new FileOutputStream(f);
-      if(format.equals("png")){
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
-      }
-      if(format.equals("jpg")){
-        bitmap.compress(Bitmap.CompressFormat.JPEG, quality == null?100:quality, fos);
-      }
-
-
+      bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+      
+      JSONObject jsonRes = new JSONObject();
+      jsonRes.put("filePath",f.getAbsolutePath());
+      PluginResult result = new PluginResult(PluginResult.Status.OK, jsonRes);
+      callbackContext.sendPluginResult(result);
     }
 
     @Override
@@ -76,7 +74,9 @@ public class ImageProcessing extends CordovaPlugin {
               //TODO: Image quality
               Bitmap newImage = BitmapFactory.decodeFile(sourceUri);
               
-              resize(image, , newWidth, newHeight, keepScale);
+              resize(image, newWidth, newHeight, keepScale);
+              
+              saveImage(image);
             }
           });
           
