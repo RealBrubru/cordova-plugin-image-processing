@@ -93,7 +93,7 @@ public class ImageProcessing extends CordovaPlugin {
             }
           });
           
-          return;
+          return true;
         }
         else if (action.equals("rotate")) {
         }
