@@ -64,3 +64,24 @@ At the moment the plugin is only avaible on the android and ios platform.
         // failed: 
       }, options);
 
+### crop
+
+    ImageProcessing.crop(success, failed, options);
+
+#### options
+  - **sourceUri** (String): The Uri for the image on the device to get scaled
+  - **destinationUri** (String): The name of the image to be saved
+  - **rect** (Rectangle): Rectangle to crop
+
+##### example
+    var options = {
+          sourceUri: sourceUri,
+          destinationUri: destinationUri,
+          rect: [30, 30, 120, 140],
+          };
+
+    ImageProcessing.crop(function(success) {
+         // success: 
+      }, function(fail) {
+        // failed: 
+      }, options);
