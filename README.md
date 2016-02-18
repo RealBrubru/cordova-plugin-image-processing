@@ -31,7 +31,8 @@ At the moment the plugin is only avaible on the android and ios platform.
           sourceUri: sourceUri,
           destinationUri: destinationUri,
           newWidth: 800,
-          newHeight: 400
+          newHeight: 400,
+          keepScale: true
           };
 
     ImageProcessing.resize(function(success) {
