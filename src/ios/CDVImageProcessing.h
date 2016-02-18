@@ -5,8 +5,10 @@
 
 - (void) resize:(CDVInvokedUrlCommand*)command;
 
+/*
 - (void) rotate:(CDVInvokedUrlCommand*)command;
 
 - (void) crop:(CDVInvokedUrlCommand*)command;
+*/
 
 @end
