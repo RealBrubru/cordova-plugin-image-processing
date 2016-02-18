@@ -12,7 +12,7 @@ imageProcessing.resize = function(successCallback, errorCallback, options) {
 
     options = options || {};
     var getValue = argscheck.getValue;
-    
+
     var sourceUri = options.sourceUri;
     var destinationUri = options.destinationUri;
     var width = getValue(options.width, -1);
@@ -23,5 +23,34 @@ imageProcessing.resize = function(successCallback, errorCallback, options) {
     exec(successCallback, errorCallback, "ImageProcessing", "resize", args);
 };
 
+imageProcessing.rotate = function(successCallback, errorCallback, options) {
+    console.log("ImageProcessing.js - rotate: " + JSON.stringify(options));
+
+    options = options || {};
+    var getValue = argscheck.getValue;
+
+    var sourceUri = options.sourceUri;
+    var destinationUri = options.destinationUri;
+    var angle = getValue(options.angle, 90);
+    var keepSize = getValue(options.keepSize, true);
+
+    var args = [sourceUri, destinationUri, angle, keepSize];
+
+    exec(successCallback, errorCallback, "ImageProcessing", "rotate", args);
+};
+
+imageProcessing.crop = function(successCallback, errorCallback, options) {
+    console.log("ImageProcessing.js - crop: " + JSON.stringify(options));
+
+    options = options || {};
+
+    var sourceUri = options.sourceUri;
+    var destinationUri = options.destinationUri;
+    var rect = options.rect;
+
+    var args = [sourceUri, destinationUri, rect];
+
+    exec(successCallback, errorCallback, "ImageProcessing", "crop", args);
+};
 
 module.exports = imageProcessing;
