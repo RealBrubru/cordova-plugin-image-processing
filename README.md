@@ -77,7 +77,7 @@ At the moment the plugin is only avaible on the android and ios platform.
     var options = {
           sourceUri: sourceUri,
           destinationUri: destinationUri,
-          rect: [30, 30, 120, 140],
+          rect: [30, 30, 120, 140]
           };
 
     ImageProcessing.crop(function(success) {
