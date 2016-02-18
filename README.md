@@ -21,10 +21,10 @@ At the moment the plugin is only avaible on the android and ios platform.
     ImageProcessing.resize(success, failed, options);
 
 #### options
-  - **sourceUri**(String): The Uri for the image on the device to get scaled
-  - **destinationUri**(String): The name of the image to be saved
-  - **width**(Number): The width of the new image
-  - **height**(Number): The height of the new image
+  - **sourceUri** (String): The Uri for the image on the device to get scaled
+  - **destinationUri** (String): The name of the image to be saved
+  - **width** (Number): The width of the new image
+  - **height** (Number): The height of the new image
 
 ##### example
     var options = {
@@ -35,8 +35,32 @@ At the moment the plugin is only avaible on the android and ios platform.
           };
 
     ImageProcessing.resize(function(success) {
-         // success: image is the new resized image
+         // success: 
       }, function(fail) {
-        // failed: grumpy cat likes this function
+        // failed: 
+      }, options);
+
+### rotate
+
+    ImageProcessing.rotate(success, failed, options);
+
+#### options
+  - **sourceUri** (String): The Uri for the image on the device to get scaled
+  - **destinationUri** (String): The name of the image to be saved
+  - **angle** (Number): Rotation angle
+  - **keepSize** (Bool): Keep image size or not
+
+##### example
+    var options = {
+          sourceUri: sourceUri,
+          destinationUri: destinationUri,
+          angle: 30,
+          keepSize: true
+          };
+
+    ImageProcessing.rotate(function(success) {
+         // success: 
+      }, function(fail) {
+        // failed: 
       }, options);
 
