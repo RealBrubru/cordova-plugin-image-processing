@@ -11,6 +11,8 @@
     NSNumber *height = [command argumentAtIndex: 3];
     BOOL keepScale = [command argumentAtIndex: 4];
     
+    
+    
     NSLog(@"CDVImageProcessing AAAAAAAHHH");
 }
 
