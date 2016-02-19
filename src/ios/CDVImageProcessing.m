@@ -40,11 +40,11 @@
 
 - (UIImage *)resizeImage:(UIImage *)originalImage toSize:(CGSize)size andKeepScale:(BOOL)keepScale {
     CGImageRef cgOriginalImage = originalImage.CGImage;
-    
-    NSLog(@"CDVImageProcessing - resizeImage() - image size (%@X%@)", originalImage.size.width, originalImage.size.height);
-    NSLog(@"CDVImageProcessing - resizeImage() - desired size (%@X%@)", size.width, size.height);
-    NSLog(@"CDVImageProcessing - resizeImage() - keepScale: %@", keepScale);
-        
+
+    NSLog(@"CDVImageProcessing - resizeImage() - image size (%fX%f)", originalImage.size.width, originalImage.size.height);
+    NSLog(@"CDVImageProcessing - resizeImage() - desired size (%fX%f)", size.width, size.height);
+    NSLog(@"CDVImageProcessing - resizeImage() - keepScale: %hhd", keepScale);
+       
     if (keepScale) {
         size = [self estimatedScaleSize:size forImage:originalImage];
     }
