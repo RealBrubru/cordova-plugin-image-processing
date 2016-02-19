@@ -5,7 +5,7 @@
 
 - (void) resize:(CDVInvokedUrlCommand *)command
 {
-    NSLog(@"CDVImageProcessing - resize - start");
+    NSLog(@"CDVImageProcessing - resize() - start");
 
     NSString *sourceUri = [command argumentAtIndex: 0];
     NSString *destinationUri = [command argumentAtIndex: 1];
@@ -22,7 +22,7 @@
     CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:@"Image resized"];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
-    NSLog(@"CDVImageProcessing - resize - stop");
+    NSLog(@"CDVImageProcessing - resize() - stop");
 }
 
 - (void) rotate:(CDVInvokedUrlCommand *)command
@@ -41,6 +41,10 @@
 - (UIImage *)resizeImage:(UIImage *)originalImage toSize:(CGSize)size andKeepScale:(BOOL)keepScale {
     CGImageRef cgOriginalImage = originalImage.CGImage;
     
+    NSLog(@"CDVImageProcessing - resizeImage() - image size (%@X%@)", originalImage.size.width, originalImage.size.height);
+    NSLog(@"CDVImageProcessing - resizeImage() - desired size (%@X%@)", size.width, size.height);
+    NSLog(@"CDVImageProcessing - resizeImage() - keepScale: %@", keepScale);
+        
     if (keepScale) {
         size = [self estimatedScaleSize:size forImage:originalImage];
     }
