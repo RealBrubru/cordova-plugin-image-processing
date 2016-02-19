@@ -14,6 +14,10 @@
     BOOL keepScale = [[command argumentAtIndex:4 withDefault:[NSNumber numberWithBool:NO]] boolValue];
 
     UIImage *originalImage = [self loadImage:sourceUri];
+    if (!originalImage) {
+        NSLog(@"CDVImageProcessing - resize() - Original image not loaded!!");
+        return;
+    }
 
     UIImage *resizedImage = [self resizeImage:originalImage toSize:CGSizeMake([width floatValue], [height floatValue]) andKeepScale:keepScale];
 
