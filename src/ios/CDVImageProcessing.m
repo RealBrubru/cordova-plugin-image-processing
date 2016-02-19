@@ -6,13 +6,13 @@
 - (void) resize:(CDVInvokedUrlCommand *)command
 {
     NSLog(@"CDVImageProcessing - resize - start");
-        
+
     NSString *sourceUri = [command argumentAtIndex: 0];
     NSString *destinationUri = [command argumentAtIndex: 1];
     NSNumber *width = [command argumentAtIndex: 2];
     NSNumber *height = [command argumentAtIndex: 3];
-    BOOL keepScale = [command argumentAtIndex: 4];
-    
+    BOOL keepScale = [[command argumentAtIndex:4 withDefault:[NSNumber numberWithBool:NO]] boolValue];
+
     UIImage *originalImage = self loadImage:sourceUri];
 
     UIImage *resizedImage = [self resizeImage:originalImage toSize:CGSizeMake(width, height) andKeepScale:keepScale];
