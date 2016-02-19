@@ -13,9 +13,9 @@
     NSNumber *height = [command argumentAtIndex: 3];
     BOOL keepScale = [[command argumentAtIndex:4 withDefault:[NSNumber numberWithBool:NO]] boolValue];
 
-    UIImage *originalImage = self loadImage:sourceUri];
+    UIImage *originalImage = [self loadImage:sourceUri];
 
-    UIImage *resizedImage = [self resizeImage:originalImage toSize:CGSizeMake(width, height) andKeepScale:keepScale];
+    UIImage *resizedImage = [self resizeImage:originalImage toSize:CGSizeMake([width floatValue], [height floatValue]) andKeepScale:keepScale];
 
     [self saveImage:resizedImage toFilePath:destinationUri];
 
