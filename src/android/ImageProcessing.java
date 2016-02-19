@@ -15,11 +15,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 public class ImageProcessing extends CordovaPlugin {
     
     public static final String LOG_TAG = "ImageProcessing";
+    public CallbackContext callbackContext;
     
     private Bitmap resize(Bitmap image, int newWidth, int newHeight, boolean keepScale)
     {
@@ -69,27 +71,29 @@ public class ImageProcessing extends CordovaPlugin {
         Log.d(LOG_TAG, "action: " + action);
         Log.d(LOG_TAG, "args: " + args.toString());
         
+        this.callbackContext = callbackContext;
+        
         if (action.equals("resize")) {
           final String sourceUri = (String) args.get(0);
           final String destinationUri = (String) args.get(1);
-          final int newWidth = (int) args.get(2);
-          final int newHeight = (int) args.get(3);
-          final boolean keepScale = (boolean) args.get(4);
+          final int newWidth = args.getInt(2);
+          final int newHeight = args.getInt(3);
+          final boolean keepScale = args.getBoolean(4);
 
           super.cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
               //TODO: Validate if image exists
               //TODO: Image quality
-              Bitmap newImage = BitmapFactory.decodeFile(sourceUri);
+              Bitmap image = BitmapFactory.decodeFile(sourceUri);
               
-              resize(image, newWidth, newHeight, keepScale);
+              Bitmap newImage = resize(image, newWidth, newHeight, keepScale);
               
-              saveImage(image);
+              saveImage(newImage, destinationUri);
             }
           });
           
-          return;
+          return true;
         }
         else if (action.equals("rotate")) {
         }
