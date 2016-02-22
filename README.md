@@ -1,4 +1,4 @@
-# Image Processing for Cordova / Ionic #
+# Ionic / Cordova Image Processing #
 
 Authors: Bruno Oliveira, Marcus Oliveira
 
