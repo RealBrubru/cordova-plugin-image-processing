@@ -15,8 +15,8 @@ imageProcessing.resize = function (successCallback, errorCallback, options) {
 
     var sourceUri = options.sourceUri;
     var destinationUri = options.destinationUri;
-    var width = options.width;
-    var height = options.height;
+    var width = options.newWidth;
+    var height = options.newHeight;
     var keepScale = getValue(options.keepScale, false);
 
     var args = [sourceUri, destinationUri, width, height, keepScale];

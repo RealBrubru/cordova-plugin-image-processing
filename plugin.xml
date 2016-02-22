@@ -39,6 +39,12 @@
         <header-file src="src/ios/CDVImageProcessing.h" />
         <source-file src="src/ios/CDVImageProcessing.m" />
 
+        <framework src="ImageIO.framework" weak="true" />
+        <framework src="CoreLocation.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="AssetsLibrary.framework" />
         <framework src="MobileCoreServices.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="AVFoundation.framework" />
     </platform>
 </plugin>
