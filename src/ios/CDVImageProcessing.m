@@ -1,13 +1,9 @@
 #import <Cordova/CDV.h>
-#import <ImageIO/ImageIO.h>
-
 #import "CDVImageProcessing.h"
 
 @implementation CDVImageProcessing
 
 - (void) resize:(CDVInvokedUrlCommand *)command {
-    NSLog(@"CDVImageProcessing - resize");
-
     [self.commandDelegate runInBackground:^{
         CDVPluginResult* pluginResult = nil;
 
@@ -40,8 +36,6 @@
     if (keepScale) {
         newImageSize = [self estimatedScaleSize:newImageSize forImageSize:imageSize];
     }
-    
-    NSLog(@"CDVImageProcessing - resizeImage() - image size (%fX%f)", newImageSize.width, newImageSize.height);
     
     CGImageRef  imageRef = [originalImage CGImage];
     CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
@@ -107,7 +101,6 @@
     NSURL* imageURL = [NSURL URLWithString:filePath];
     UIImage* image = [UIImage imageWithData: [NSData dataWithContentsOfURL: imageURL]];
     if (!image) {
-        NSLog(@"CDVImageProcessing - loadImage(%@) - Original image data not loaded!!", filePath);
         return nil;
     }
 
