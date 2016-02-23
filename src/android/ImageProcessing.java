@@ -47,7 +47,7 @@ public class ImageProcessing extends CordovaPlugin {
 	    }
     }
     
-    private void saveImage(Bitmap image, String destinationUri)
+    private void saveImage(Bitmap image, String destinationUri) throws JSONException
     {
       //TODO: Support the full path
       File folder = new File(Environment.getExternalStorageDirectory(), "Pictures");
