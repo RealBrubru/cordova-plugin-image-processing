@@ -21,7 +21,18 @@
 }
 
 - (void) rotate:(CDVInvokedUrlCommand *)command {
-    NSLog(@"CDVImageProcessing - rotate");
+    [self.commandDelegate runInBackground:^{
+        CDVPluginResult* pluginResult = nil;
+
+        NSString *sourceUri = [command argumentAtIndex: 0];
+        NSString *destinationUri = [command argumentAtIndex: 1];
+        NSNumber *angle = [command argumentAtIndex: 2];
+
+        [self rotateImage:sourceUri toDestinationUri:destinationUri toAngle:angle];
+
+        pluginResult = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:@"Image rotated"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 - (void) crop:(CDVInvokedUrlCommand *)command {
@@ -37,7 +48,7 @@
         newImageSize = [self estimatedScaleSize:newImageSize forImageSize:imageSize];
     }
     
-    CGImageRef  imageRef = [originalImage CGImage];
+    CGImageRef imageRef = [originalImage CGImage];
     CGImageAlphaInfo alphaInfo = CGImageGetAlphaInfo(imageRef);
     
     // There's a wierdness with kCGImageAlphaNone and CGBitmapContextCreate
@@ -69,7 +80,7 @@
     
     CGContextRelease(bitmap);   // ok if NULL
     CGImageRelease(ref);
-    
+
     NSError* err = nil;
     [self saveImage:resizedImage toFilePath:destinationUri error:&err];
 }
@@ -83,6 +94,28 @@
 
     return newSize;
 }
+
+
+
+- (void)rotateImage:(NSString *)sourceUri toDestinationUri:(NSString *)destinationUri toAngle:(NSNumber *)angle {
+    UIImage *originalImage = [self loadImage:sourceUri];
+
+    CGFloat radians = M_PI * [angle intValue] / 180;
+
+    CGSize imageSize = originalImage.size;
+    CGRect imageRect = CGRectMake(0, 0, imageSize.width, imageSize.height);
+    CGRect rotatedRect = CGRectApplyAffineTransform(imageRect, CGAffineTransformMakeRotation(radians));
+
+    CGImageRef cgOriginalImage = [originalImage CGImage];
+}
+
+
+
+
+
+
+
+
 
 - (BOOL)saveImage:(UIImage *)image toFilePath:(NSString *)filePath error:(NSError **)error; {
     NSURL* imageURL = [NSURL URLWithString:filePath];
