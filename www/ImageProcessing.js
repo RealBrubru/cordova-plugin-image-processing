@@ -33,9 +33,8 @@ imageProcessing.rotate = function (successCallback, errorCallback, options) {
     var sourceUri = options.sourceUri;
     var destinationUri = options.destinationUri;
     var angle = getValue(options.angle, 90);
-    var keepSize = getValue(options.keepSize, true);
 
-    var args = [sourceUri, destinationUri, angle, keepSize];
+    var args = [sourceUri, destinationUri, angle];
 
     exec(successCallback, errorCallback, "ImageProcessing", "rotate", args);
 };
