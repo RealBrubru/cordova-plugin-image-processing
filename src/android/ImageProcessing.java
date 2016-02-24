@@ -47,7 +47,7 @@ public class ImageProcessing extends CordovaPlugin {
 	    }
     }
     
-    private void saveImage(Bitmap image, String destinationUri) throws JSONException
+    private void saveImage(Bitmap image, String destinationUri) throws JSONException, IOException
     {
       //TODO: Support the full path
       File folder = new File(Environment.getExternalStorageDirectory(), "Pictures");
@@ -83,13 +83,22 @@ public class ImageProcessing extends CordovaPlugin {
           super.cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-              //TODO: Validate if image exists
-              //TODO: Image quality
-              Bitmap image = BitmapFactory.decodeFile(sourceUri);
-              
-              Bitmap newImage = resize(image, newWidth, newHeight, keepScale);
-              
-              saveImage(newImage, destinationUri);
+              try
+              {
+                //TODO: Validate if image exists
+                //TODO: Image quality
+                Bitmap image = BitmapFactory.decodeFile(sourceUri);
+                
+                Bitmap newImage = resize(image, newWidth, newHeight, keepScale);
+                
+                saveImage(newImage, destinationUri);
+
+              } catch (JSONException e) {
+                callbackContext.error(e.getMessage());
+                
+              } catch (IOException e) {
+                callbackContext.error(e.getMessage()); 
+              }             
             }
           });
           
