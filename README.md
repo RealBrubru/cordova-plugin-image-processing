@@ -49,14 +49,12 @@ At the moment the plugin is only avaible on the android and ios platform.
   - **sourceUri** (String): The Uri for the image on the device to get scaled
   - **destinationUri** (String): The name of the image to be saved
   - **angle** (Number): Rotation angle
-  - **keepSize** (Bool): Keep image size or not
 
 ##### example
     var options = {
           sourceUri: sourceUri,
           destinationUri: destinationUri,
-          angle: 30,
-          keepSize: true
+          angle: 30
           };
 
     ImageProcessing.rotate(function(success) {
